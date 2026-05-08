@@ -1,9 +1,14 @@
 # Grupp 2 Music Roast Application
 
+---
+
 ### Projektbeskrivning
 
+---
 
 ## Installation & start
+
+---
 
 ### 1. Klona projektet
 
@@ -15,6 +20,8 @@ cd grupparbete
 Eller:
 * Download ZIP
 
+---
+
 ### 2. Installera beroenden:
 
 i rotmappen
@@ -25,6 +32,8 @@ i Strapimappen
 ```bash
 npm install 
 ```
+
+---
 
 ### 3. Starta utvecklingsservern:
 ```bash
@@ -38,11 +47,14 @@ När servrarna är igång hittar du applikationen på följande adresser:
 
 * Backend (Strapi): http://localhost:1337
 
+---
+
 ### Teknikstack
 * Backend:Strapi (Headless CMS)
 * Frontend:React
 * Verktyg:Concurrently
 
+---
 
 ### Gruppmedlemmar
 * Kirey Perez Vega
@@ -50,3 +62,5 @@ När servrarna är igång hittar du applikationen på följande adresser:
 * Jonathan Berhane
 * Michael Jangstad
 * Tommy Hultén
+
+---
