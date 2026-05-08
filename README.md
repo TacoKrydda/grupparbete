@@ -35,12 +35,21 @@ npm install
 
 ---
 
-### 3. Starta utvecklingsservern:
+### 3. Miljövariabler (.env)
+
+Projektet kräver miljövariabler för att fungera korrekt.
+
+*  Gå in i Strapimappen.
+*  Skapa en fil med namnet .env.
+*  Kopiera innehållet från .env.example (om sådan finns) eller fyll i de nödvändiga nycklarna för Strapi.
+
+
+### 4. Starta utvecklingsservern:
 ```bash
 npm run start
 ```
 
-### 4. Öppna i webbläsaren (Ctrl+klick)
+### 5. Öppna i webbläsaren (Ctrl+klick)
 När servrarna är igång hittar du applikationen på följande adresser:
 
 * Frontend (React): http://localhost:5173
