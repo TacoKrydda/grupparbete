@@ -42,6 +42,7 @@ Projektet kräver miljövariabler för att fungera korrekt.
 *  Skapa en fil med namnet .env.
 *  Kopiera innehållet från .env.example (om sådan finns) eller fyll i de nödvändiga nycklarna för Strapi.
 
+---
 
 ### 4. Starta utvecklingsservern:
 ```bash
