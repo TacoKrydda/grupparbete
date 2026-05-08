@@ -14,7 +14,6 @@
 
 ```bash
 git clone [https://github.com/TacoKrydda/grupparbete.git](https://github.com/TacoKrydda/grupparbete.git)
-cd grupparbete
 ```
 
 Eller:
