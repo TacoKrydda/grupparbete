@@ -13,7 +13,7 @@
 ### 1. Klona projektet
 
 ```bash
-git clone [https://github.com/TacoKrydda/grupparbete.git](https://github.com/TacoKrydda/grupparbete.git)
+git clone https://github.com/TacoKrydda/grupparbete.git
 ```
 
 Eller:
