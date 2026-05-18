@@ -4,7 +4,7 @@ import { createBrowserRouter, RouterProvider } from "react-router";
 
 import App from "./App.jsx";
 import routes from "./routes";
-import PageNotFound from "./pages/PageNotFound.jsx";
+import PageNotFound from "./PageNotFound.jsx";
 
 const router = createBrowserRouter([
   {
