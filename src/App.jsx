@@ -15,11 +15,11 @@ export default function App() {
     <div className="app">
       <ScrollToTop />
       
-      /* user och setUser som props till Header */
+      {/* user och setUser som props till Header */}
       <Header user={user} setUser={setUser} />
       
       <main className="content">
-        /* Skickar user och setUser som context till alla underkomponenter - routes */
+        {/* Skickar user och setUser som context till alla underkomponenter - routes */}
         <Outlet context={{ user, setUser }} />
       </main>
       
