@@ -1,3 +1,30 @@
+/*import { Outlet } from "react-router";
+import Header from "./layouts/Header";
+import Footer from "./layouts/Footer";
+import BackToTop from "./components/BackToTop";
+import ScrollToTop from "./components/ScrollToTop";
+import "./index.css";
+
+function App() {
+  return (
+    <div className="app">
+      <ScrollToTop />
+      <Header />
+      <main className="content">
+        <Outlet />
+      </main>
+      <Footer />
+      <BackToTop />
+    </div>
+  );
+}
+
+export default App;
+*/
+
+
+
+
 import { Outlet } from "react-router";
 import Header from "./layouts/Header";
 import Footer from "./layouts/Footer";
@@ -15,11 +42,11 @@ export default function App() {
     <div className="app">
       <ScrollToTop />
       
-      /* user och setUser som props till Header */
+      {/* user och setUser som props till Header */}
       <Header user={user} setUser={setUser} />
       
       <main className="content">
-        /* Skickar user och setUser som context till alla underkomponenter - routes */
+        {/* user och setUser som context till alla underkomponenter - routes */}
         <Outlet context={{ user, setUser }} />
       </main>
       
@@ -28,3 +55,5 @@ export default function App() {
     </div>
   );
 }
+
+
