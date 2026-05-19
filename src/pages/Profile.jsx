@@ -1,62 +1,83 @@
-import { useState } from 'react';
-import { useNavigate, useOutletContext, Link } from 'react-router';
+import { useState, useEffect } from 'react';
+import { useNavigate, useOutletContext } from 'react-router';
 
-
-Login.route = {
-  path: '/login',
-  index: 10
+Profile.route = {
+  path: '/profile',
+  index: 12
 };
 
-export default function Login() {
-
-  const formInitialState = {
-    identifier: '', // Strapi accepts username OR email here
-    password: ''
-  };
-
-  const [formData, setFormData] = useState(formInitialState);
-  const [error, setError] = useState('');
-  const { setUser } = useOutletContext();
+export default function Profile() {
+  const { user, setUser } = useOutletContext();
   const navigate = useNavigate();
+
+  const [formData, setFormData] = useState({
+  username: user?.user?.username ?? '',
+  email: user?.user?.email ?? '',
+  password: ''
+});
+  const [error, setError] = useState('');
+  const [saved, setSaved] = useState(false);
+
+  useEffect(() => {
+    if (!user) {
+      navigate('/login');
+    }
+  }, [user, navigate]);
 
   function updateFormData(event) {
     const { name: key, value } = event.target;
-    setFormData({ ...formData, [key]: value });
+    setFormData(prev => ({ ...prev, [key]: value }));
+    setSaved(false);
   }
 
   async function sendForm(event) {
     event.preventDefault();
     setError('');
-    const response = await fetch('/api/auth/local', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(formData)
+
+    const body = { ...formData };
+    if (!body.password) delete body.password;
+
+    const response = await fetch('/api/users/' + user.user.id, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: 'Bearer ' + user.jwt
+      },
+      body: JSON.stringify(body)
     });
     const data = await response.json();
     if (!response.ok) {
-      setError(data.error?.message || 'Login failed');
+      setError(data.error?.message || 'Could not save');
       return;
     }
-    // save the whole Strapi response (contains jwt + user) directly
-    localStorage.user = JSON.stringify(data);
-    setUser(data);
-    navigate('/');
+    const updated = { ...user, user: data };
+    localStorage.user = JSON.stringify(updated);
+    setUser(updated);
+    setFormData(prev => ({ ...prev, password: '' }));
+    setSaved(true);
   }
 
+  // Rendera ingenting medan redirect sker
+  if (!user) return null;
+
   return <>
-    <h2>Log in</h2>
+    <h2>My profile</h2>
     <form onSubmit={sendForm}>
       <label>
-        Username or email:
-        <input required name="identifier" type="text" value={formData.identifier} onChange={updateFormData} />
+        Username:
+        <input required name="username" type="text" value={formData.username} onChange={updateFormData} />
       </label>
       <label>
-        Password:
-        <input required name="password" type="password" value={formData.password} onChange={updateFormData} />
+        Email:
+        <input required name="email" type="email" value={formData.email} onChange={updateFormData} />
       </label>
-      <button type="submit">Log in</button>
+      <label>
+        New password: <small>(lämna tomt för att behålla nuvarande, annars minst 6 tecken)</small>
+        <input minLength={6} name="password" type="password" value={formData.password} onChange={updateFormData} />
+      </label>
+      <button type="submit">Save</button>
       {error && <p style={{ color: 'red' }}>{error}</p>}
+      {saved && <p style={{ color: 'green' }}>Profile saved.</p>}
     </form>
-    <p style={{color: "black"}}>Skapa konto <Link to="/register">Registrera dig här</Link></p>
   </>;
 }

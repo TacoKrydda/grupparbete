@@ -1,0 +1,13 @@
+.login-text {
+  color: #555555; 
+  font-size: 0.95rem;
+  margin-top: 20px;
+}
+.login-link {
+  color: #2563eb; 
+  font-weight: 600; 
+}
+.login-link:hover {
+  color: #1d4ed8; 
+  text-decoration: underline; 
+}

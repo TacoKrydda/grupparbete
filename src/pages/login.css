@@ -1,0 +1,13 @@
+.register-text {
+  color: #555555;
+  font-size: 0.95rem;
+  margin-top: 20px;
+}
+.register-link {
+  color: #2563eb; 
+  font-weight: 600; 
+}
+.register-link:hover {
+  color: #1d4ed8; 
+  text-decoration: underline; 
+}

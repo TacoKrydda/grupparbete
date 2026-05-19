@@ -1,6 +1,6 @@
-
 import { useState } from 'react';
 import { useNavigate, useOutletContext, Link } from 'react-router';
+import "./Login.css";
 
 Login.route = {
   path: '/login',
@@ -57,6 +57,6 @@ export default function Login() {
       <button type="submit">Log in</button>
       {error && <p style={{ color: 'red' }}>{error}</p>}
     </form>
-    <p>Don't have an account? <Link to="/register">Register here</Link></p>
+    <p className="register-text">Skapa konto <Link to="/Register" className="register-link">- Registrera dig här</Link></p>
   </>;
 }

@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useNavigate, useOutletContext, Link } from 'react-router';
+import "./Register.css";
 
 Register.route = {
   path: '/register',
@@ -61,6 +62,6 @@ export default function Register() {
       <button type="submit">Register</button>
       {error && <p style={{ color: 'red' }}>{error}</p>}
     </form>
-    <p>Har du redan ett konto <Link to="/login">Logga in här</Link></p>
+    <p className="login-text">Har du redan ett konto <Link to="/login" className="login-link">- Logga in här</Link></p>
   </>;
 }
